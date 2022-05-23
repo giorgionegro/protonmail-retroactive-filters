@@ -1,9 +1,33 @@
+
+
 javascript:(async function () {
+    async function extracted(sleep,) {
+        var flag = true;
+        var IDs;
+        while (flag) {
+            flag = false;
+            await sleep(1000);
+            ;
+            try {
+                IDs = [document.getElementsByClassName("is-opened")[0].attributes['data-message-id'].nodeValue];
+            } catch (error) {
+                IDs = ['pending'];
+            }
+
+
+            if (IDs[0] == 'pending') {
+                await new Promise(r => setTimeout(r, 1000));
+                flag = true;
+
+            }
+        }
+        return { IDs};
+    }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+    //have to write a function to get labels IDs and map them to names
 
-    const window = self;
     while (true) {
         await sleep(1000);
         ;var uid = JSON.parse(localStorage["ps-0"]).UID;
@@ -13,25 +37,9 @@ javascript:(async function () {
             console.log(elelment.getElementsByClassName("item-senders")[0].getElementsByTagName("span")[0].title);
             if (elelment.getElementsByClassName("item-senders")[0].getElementsByTagName("span")[0].title != "") {
                 /* inside this if statement you can add your own logic to filter the emails maybe in future I will add a sieve parser*/
-                if (elelment.getElementsByClassName("item-senders")[0].getElementsByTagName("span")[0].title.includes("steam")) {
+                if (elelment.getElementsByClassName("item-senders")[0].getElementsByTagName("span")[0].title.includes("steam"))/*condition for filter in this case is if the mail contains steam*/ {
                     elelment.click();
-                    var IDs;
-                    await sleep(1000);
-                    ;
-                    /* have to change this to a loop  and make a function so I wont have to copy and paste it for all filters*/
-                    function as() {
-                        try {
-                            IDs = [document.getElementsByClassName("is-opened")[0].attributes['data-message-id'].nodeValue];
-                        } catch (error) {
-                            IDs = ['pending'];
-                        }
-                    }
-
-                    as();
-                    if (IDs[0] == 'pending') {
-                        await new Promise(r => setTimeout(r, 1000));
-                        as();
-                    }
+                    var IDs = await extracted(sleep, IDs);
                     console.log(JSON.stringify({
                         "LabelID": "8K4zniYGIDE1r42ubu7mb6ete6EUsyVYw4oesErUJYzaK9Rsg7wHMcwMgoce4ojuyHFQBncwPoR56xF2Wqurqg==",
                         "IDs": IDs
@@ -53,7 +61,7 @@ javascript:(async function () {
                         },
                         "referrer": "https://mail.protonmail.com/u/0/inbox",
                         "body": JSON.stringify({
-                            "LabelID": "fT4Yj8ggr2u-teOeWxZO8iGpmPDGStPSyFk76jQNjxcR6jT9zI8ygj5Pyb9OavFO8WR_vDXwLJVc06amOkTg6A==",
+                            "LabelID": "fT4Yj8ggr2u-teOeWxZO8iGpmPDGStPSyFk76jQNjxcR6jT9zI8ygj5Pyb9OavFO8WR_vDXwLJVc06amOkTg6A==", //label id you can get it by inspecting the label buttons on protonmail
                             "IDs": IDs
                         }),
                         "method": "PUT",
@@ -64,23 +72,7 @@ javascript:(async function () {
                     console.log("itch folder");
                     elelment.click();
                     await sleep(1000);
-                    ;var IDs;
-                    await sleep(1000);
-                    ;
-
-                    function as() {
-                        try {
-                            IDs = [document.getElementsByClassName("is-opened")[0].attributes['data-message-id'].nodeValue];
-                        } catch (error) {
-                            IDs = ['pending'];
-                        }
-                    }
-
-                    as();
-                    if (IDs[0] == 'pending') {
-                        await sleep(1000);
-                        ;as();
-                    }
+                    var IDs = await extracted(sleep, IDs);
                     console.log(JSON.stringify({
                         "LabelID": "8K4zniYGIDE1r42ubu7mb6ete6EUsyVYw4oesErUJYzaK9Rsg7wHMcwMgoce4ojuyHFQBncwPoR56xF2Wqurqg==",
                         "IDs": IDs
@@ -111,23 +103,7 @@ javascript:(async function () {
                 if (elelment.getElementsByClassName("item-senders")[0].getElementsByTagName("span")[0].title.includes("epic")) {
                     elelment.click();
                     await sleep(1000);
-                    ;var IDs;
-                    await sleep(1000);
-                    ;
-
-                    function as() {
-                        try {
-                            IDs = [document.getElementsByClassName("is-opened")[0].attributes['data-message-id'].nodeValue];
-                        } catch (error) {
-                            IDs = ['pending'];
-                        }
-                    }
-
-                    as();
-                    if (IDs[0] == 'pending') {
-                        await sleep(1000);
-                        ;as();
-                    }
+                     var IDs = await extracted(sleep, IDs);
                     console.log(JSON.stringify({
                         "LabelID": "8K4zniYGIDE1r42ubu7mb6ete6EUsyVYw4oesErUJYzaK9Rsg7wHMcwMgoce4ojuyHFQBncwPoR56xF2Wqurqg==",
                         "IDs": IDs
