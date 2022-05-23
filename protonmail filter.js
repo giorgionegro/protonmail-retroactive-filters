@@ -18,7 +18,7 @@ javascript:(async function () {
                     var IDs;
                     await sleep(1000);
                     ;
-
+                    /* have to change this to a loop  and make a function so I wont have to copy and paste it for all filters*/
                     function as() {
                         try {
                             IDs = [document.getElementsByClassName("is-opened")[0].attributes['data-message-id'].nodeValue];
