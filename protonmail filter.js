@@ -21,12 +21,12 @@ javascript:(async function () {
 
             }
         }
-        return { IDs};
+        return  IDs;
     }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    //have to write a function to get labels IDs and map them to names
+    /*have to write a function to get labels IDs and map them to names*/
 
     while (true) {
         await sleep(1000);
@@ -61,7 +61,7 @@ javascript:(async function () {
                         },
                         "referrer": "https://mail.protonmail.com/u/0/inbox",
                         "body": JSON.stringify({
-                            "LabelID": "fT4Yj8ggr2u-teOeWxZO8iGpmPDGStPSyFk76jQNjxcR6jT9zI8ygj5Pyb9OavFO8WR_vDXwLJVc06amOkTg6A==", //label id you can get it by inspecting the label buttons on protonmail
+                            "LabelID": "fT4Yj8ggr2u-teOeWxZO8iGpmPDGStPSyFk76jQNjxcR6jT9zI8ygj5Pyb9OavFO8WR_vDXwLJVc06amOkTg6A==", /*label id you can get it by inspecting the label buttons on protonmail*/
                             "IDs": IDs
                         }),
                         "method": "PUT",
